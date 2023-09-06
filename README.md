@@ -13,3 +13,13 @@ Lizenzen
 Inspiration
 
 ## Installation
+
+## Lizenzen
+
+## Inspiration
+
+Ich kam mit denen nicht klar Fand aber die grund idee cool:
+
+https://www.dndbeyond.com/
+
+https://roll20.net/
