@@ -8,9 +8,25 @@ Mein ziel ist es ein plat form zu erstellen das die einem die Tabeltop spiele er
 
 Absichten
 Inhatverzeichnis
+To do
+Log
 Installation
 Lizenzen
 Inspiration
+
+## To do
+
+Read me aus arbeiten
+Miro erabeiten
+Erstellen von vue.js fronten mit bootstrap scss und Font awsome
+Ersellen von Backend mid node js und express conecten mit vue.js
+Datenbank erstellen und conecten mit Node js
+
+Login erstellen
+Email verifikation
+Visa zahlung ermöglichen
+
+## Log
 
 ## Installation
 
