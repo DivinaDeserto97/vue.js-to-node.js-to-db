@@ -1,0 +1,14 @@
+/* Überschreiben von Bootstrap's Button-Stilen */
+.btn-primary {
+    color: #000; // Textfarbe für den primären Button
+    background-color: #00ff00; // Hintergrundfarbe (Hellgrün)
+    border-color: darken(#00ff00, 10%); // Rahmenfarbe
+
+    &:hover, &:focus, &:active {
+        color: #000; // Textfarbe beim Darüberfahren mit der Maus
+        background-color: darken(#00ff00, 10%); // Hintergrundfarbe beim Darüberfahren mit der Maus
+        border-color: darken(#00ff00, 15%); // Rahmenfarbe beim Darüberfahren mit der Maus
+    }
+}
+
+// Optional: Ihr weiterer SCSS-Code oder Überschreibungen
