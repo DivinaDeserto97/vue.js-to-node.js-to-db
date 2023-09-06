@@ -22,9 +22,9 @@ Github link: https://github.com/DivinaDeserto97/WildArtTabletop.git
 - Miro erabeiten
 
 - Projektstruktur
- - Erstellen von vue.js fronten mit bootstrap scss und Font awsome
- - Ersellen von Backend mid node js und express conecten mit vue.js
- - Datenbank erstellen und conecten mit Node js
+  - Erstellen von vue.js fronten mit bootstrap scss und Font awsome
+  - Ersellen von Backend mid node js und express conecten mit vue.js
+  - Datenbank erstellen und conecten mit Node js
 
 - Login erstellen
 - Email verifikation
