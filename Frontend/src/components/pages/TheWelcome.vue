@@ -1,12 +1,15 @@
 <script setup>
+// Vue-Imports
 import { ref } from "vue";
 
-const Tooltipp = ref("");
-const ToolTippPos = ref({ x: 0, y: 0 });
-const isTooltipVisible = ref(false);
+// Zustandsvariablen für den Tooltip
+const Tooltipp = ref(""); // Text des Tooltips
+const ToolTippPos = ref({ x: 0, y: 0 }); // Position des Tooltips
+const isTooltipVisible = ref(false); // Anzeigestatus des Tooltips
 
-let throttleTimer;
+let throttleTimer; // Timer für die throttle-Funktion
 
+// Funktion, um mehrfache Aufrufe einer Funktion in kurzer Zeit zu verhindern
 function throttle(func, delay, ...args) {
   if (throttleTimer) return;
 
@@ -16,24 +19,29 @@ function throttle(func, delay, ...args) {
   }, delay);
 }
 
+// Funktion, um den Tooltip anzuzeigen
 function showToolTipp(event, text) {
   Tooltipp.value = text;
   ToolTippPos.value = { x: event.clientX + 20, y: event.clientY };
   isTooltipVisible.value = true;
 }
 
+// Funktion, um den Tooltip auszublenden
 function hideToolTipp() {
   isTooltipVisible.value = false;
 }
 
+// Handler, um den Tooltip mit Verzögerung anzuzeigen
 function handleMouseOver(event, text) {
   throttle(showToolTipp, 100, event, text);
 }
 
+// Handler, um den Tooltip mit Verzögerung auszublenden
 function handleMouseLeave() {
   throttle(hideToolTipp, 100);
 }
 
+// Funktion, um das Passwort sichtbar zu machen
 function ShowPasswort(id) {
   let btnshow = id + "show";
   let btnhide = id + "hide";
@@ -41,6 +49,8 @@ function ShowPasswort(id) {
   document.getElementById(btnhide).style.display = "block";
   document.getElementById(btnshow).style.display = "none";
 }
+
+// Funktion, um das Passwort wieder zu verbergen
 function HidePasswort(id) {
   let btnshow = id + "show";
   let btnhide = id + "hide";
@@ -54,6 +64,7 @@ function HidePasswort(id) {
   <div>
     <div class="row">Hallo User</div>
     <div class="row">
+      <!-- Login-Button mit Tooltip-Funktionalität -->
       <button
         name="Login"
         type="button"
@@ -63,7 +74,7 @@ function HidePasswort(id) {
       >
         <i class="fa-solid fa-arrow-right"></i><i class="fa-solid fa-user"></i>
       </button>
-      <!-- Der "Registrieren"-Button öffnet das Modal -->
+      <!-- "Registrieren"-Button, der das Modal öffnet -->
       <button
         name="Registrierung"
         type="button"
@@ -76,7 +87,7 @@ function HidePasswort(id) {
         <i class="fa-solid fa-user-plus"></i>
       </button>
     </div>
-    <!-- Das Tooltip-Feld -->
+    <!-- Tooltip-Element -->
     <div
       v-if="isTooltipVisible"
       :style="{ top: `${ToolTippPos.y}px`, left: `${ToolTippPos.x}px` }"
@@ -85,7 +96,7 @@ function HidePasswort(id) {
       {{ Tooltipp }}
     </div>
 
-    <!-- Bootstrap Modal -->
+    <!-- Bootstrap Modal für Registrierung -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -106,12 +117,15 @@ function HidePasswort(id) {
               aria-label="Close"
             ></button>
           </div>
+          <!-- Formular für Registrierung im Modal -->
           <div class="modal-body">
             <form>
+              <!-- Username-Eingabefeld -->
               <div class="mb-3">
                 <label for="Username1" class="form-label">Username</label>
                 <input type="text" class="form-control col" id="Username1" />
               </div>
+              <!-- Passwort-Eingabefeld mit "zeigen" und "verbergen" Optionen -->
               <div class="mb-3">
                 <label for="Password1" class="form-label">Password</label>
                 <div class="row">
@@ -120,6 +134,7 @@ function HidePasswort(id) {
                     type="password"
                     class="form-control col"
                   />
+                  <!-- Buttons zum Zeigen/Verbergen des Passworts -->
                   <button
                     id="Password1show"
                     @mouseover="(e) => handleMouseOver(e, 'Passwort zeigen')"
@@ -143,6 +158,7 @@ function HidePasswort(id) {
                   </button>
                 </div>
               </div>
+              <!-- Bestätigung des Passworts mit "zeigen" und "verbergen" Optionen -->
               <div class="mb-3">
                 <label for="ConfirmPassword1" class="form-label"
                   >Confirm Password</label
@@ -153,6 +169,7 @@ function HidePasswort(id) {
                     type="password"
                     class="form-control col"
                   />
+                  <!-- Buttons zum Zeigen/Verbergen des Confirm Password -->
                   <button
                     id="ConfirmPassword1show"
                     @mouseover="
@@ -180,6 +197,7 @@ function HidePasswort(id) {
                   </button>
                 </div>
               </div>
+              <!-- Senden-Button -->
               <button
                 @mouseover="(e) => handleMouseOver(e, 'Senden')"
                 @mouseleave="handleMouseLeave"
@@ -196,15 +214,16 @@ function HidePasswort(id) {
   </div>
 </template>
 
+<!-- Stil für den Tooltip -->
 <style scoped>
 .Tooltipp-light {
   width: auto;
   height: auto;
-  background-color: red;
-  position: absolute;
-  z-index: 9999;
-  pointer-events: none;
-  border-radius: 5px;
-  padding: 5px;
+  background-color: red; /* Hintergrundfarbe */
+  position: absolute; /* Positionierung relativ zum Viewport */
+  z-index: 9999; /* sorgt dafür, dass der Tooltip oberhalb anderer Elemente angezeigt wird */
+  pointer-events: none; /* verhindert, dass der Tooltip Mausereignisse erfasst */
+  border-radius: 5px; /* abgerundete Ecken */
+  padding: 5px; /* Innenabstand */
 }
 </style>
