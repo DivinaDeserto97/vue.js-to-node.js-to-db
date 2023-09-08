@@ -1,18 +1,12 @@
 <script setup>
-import TheWelcome from './components/TheWelcome.vue'
+import TheWelcome from "./components/pages/TheWelcome.vue";
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
+  <div class="container">
+    
     <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
