@@ -1,5 +1,5 @@
 <script setup></script>
 <template>
-    Hallo ich bin der desktop footer
+    Hallo ich bin der Tablet haeder
 </template>
 <style scoped></style>
