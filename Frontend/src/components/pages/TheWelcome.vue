@@ -1,60 +1,115 @@
 <script setup>
 import { ref } from "vue";
 
-const tooltipText = ref("halo");
-const tooltipPosition = ref({ x: 0, y: 0 });
+const Tooltipp = ref("");
+const ToolTippPos = ref({ x: 0, y: 0 });
+const isTooltipVisible = ref(false);
 
-function showTooltip(event, text) {
-  tooltipText.value = text;
-  tooltipPosition.value = { x: event.clientX + 10, y: event.clientY + 10 };
+let throttleTimer;
+
+function throttle(func, delay, ...args) {
+  if (throttleTimer) return;
+
+  throttleTimer = setTimeout(() => {
+    func(...args);
+    throttleTimer = null;
+  }, delay);
 }
 
-function hideTooltip() {
-  tooltipText.value = "";
+function showToolTipp(event, text) {
+  Tooltipp.value = text;
+  ToolTippPos.value = { x: event.clientX + 20, y: event.clientY };
+  isTooltipVisible.value = true;
+}
+
+function hideToolTipp() {
+  isTooltipVisible.value = false;
+}
+
+function handleMouseOver(event, text) {
+  throttle(showToolTipp, 100, event, text);
+}
+
+function handleMouseLeave() {
+  throttle(hideToolTipp, 100);
 }
 </script>
 
 <template>
-  <div class="row">Hallo User</div>
-  <div class="row">
-    <button
-      name="Login"
-      type="button"
-      class="btn btn-primary col-1"
-      @mouseover="showTooltip($event, 'Login')"
-      @mouseleave="hideTooltip"
+  <div>
+    <div class="row">Hallo User</div>
+    <div class="row">
+      <button
+        name="Login"
+        type="button"
+        class="btn btn-primary col-1"
+        @mouseover="(e) => handleMouseOver(e, 'Login')"
+        @mouseleave="handleMouseLeave"
+      >
+        <i class="fa-solid fa-arrow-right"></i><i class="fa-solid fa-user"></i>
+      </button>
+      <!-- Der "Registrieren"-Button öffnet das Modal -->
+      <button
+        name="Registrierung"
+        type="button"
+        class="btn btn-success col-1"
+        @mouseover="(e) => handleMouseOver(e, 'Registrierung')"
+        @mouseleave="handleMouseLeave"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+      </button>
+    </div>
+    <!-- Das Tooltip-Feld -->
+    <div
+      v-if="isTooltipVisible"
+      :style="{ top: `${ToolTippPos.y}px`, left: `${ToolTippPos.x}px` }"
+      class="Tooltipp-light"
     >
-      <i class="fa-solid fa-arrow-right"></i><i class="fa-solid fa-user"></i>
-    </button>
-    <button
-      name="Registrierung"
-      type="button"
-      class="btn btn-success col-1"
-      @mouseover="showTooltip($event, 'Registrierung')"
-      @mouseleave="hideTooltip"
+      {{ Tooltipp }}
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
     >
-      <i class="fa-solid fa-user-plus"></i>
-    </button>
-  </div>
-  <div
-    v-if="tooltipText"
-    :style="{ top: `${tooltipPosition.y}px`, left: `${tooltipPosition.x}px` } "
-    class="tooltip"
-  >
-    {{ tooltipText }}
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button
+              @mouseover="(e) => handleMouseOver(e, 'close')"
+              @mouseleave="handleMouseLeave"
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.tooltip {
-  position: relative;
-  min-width: 50px; /* Beispielwert */
-  min-height: 20px; /* Beispielwert */
+.Tooltipp-light {
+  width: auto;
+  height: auto;
+  background-color: red;
+  position: absolute;
   z-index: 9999;
-  background-color: white;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 4px;
   pointer-events: none;
+  border-radius: 5px;
+  padding: 5px;
 }
 </style>
