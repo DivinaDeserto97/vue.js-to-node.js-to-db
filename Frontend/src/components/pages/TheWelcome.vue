@@ -33,6 +33,27 @@ function handleMouseOver(event, text) {
 function handleMouseLeave() {
   throttle(hideToolTipp, 100);
 }
+
+function ShowPasswort() {
+  document.getElementById("Password1").type = "text";
+  document.getElementById("hide1").style.display = "block";
+  document.getElementById("show1").style.display = "none";
+}
+function HidePasswort() {
+  document.getElementById("Password1").type = "password";
+  document.getElementById("show1").style.display = "block";
+  document.getElementById("hide1").style.display = "none";
+}
+function ShowConfirmPasswort() {
+  document.getElementById("ConfirmPassword1").type = "text";
+  document.getElementById("hide2").style.display = "block";
+  document.getElementById("show2").style.display = "none";
+}
+function HideConfirmPasswort() {
+  document.getElementById("ConfirmPassword1").type = "password";
+  document.getElementById("show2").style.display = "block";
+  document.getElementById("hide2").style.display = "none";
+}
 </script>
 
 <template>
@@ -83,7 +104,7 @@ function handleMouseLeave() {
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
             <button
-              @mouseover="(e) => handleMouseOver(e, 'close')"
+              @mouseover="(e) => handleMouseOver(e, 'schliesen')"
               @mouseleave="handleMouseLeave"
               type="button"
               class="btn-close"
@@ -91,9 +112,89 @@ function handleMouseLeave() {
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="Username1" class="form-label">Username</label>
+                <input type="text" class="form-control col" id="Username1" />
+              </div>
+              <div class="mb-3">
+                <label for="Password1" class="form-label">Password</label>
+                <div class="row">
+                  <input
+                    type="password"
+                    class="form-control col"
+                    id="Password1"
+                  />
+                  <button
+                    id="show1"
+                    @mouseover="(e) => handleMouseOver(e, 'Passwort zeigen')"
+                    @mouseleave="handleMouseLeave"
+                    @click="ShowPasswort"
+                    type="button"
+                    class="btn btn-light col-2"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button
+                    id="hide1"
+                    @mouseover="(e) => handleMouseOver(e, 'Passwort versteken')"
+                    @mouseleave="handleMouseLeave"
+                    @click="HidePasswort"
+                    type="button"
+                    class="btn btn-light col-2"
+                    style="display: none"
+                  >
+                    <i class="fa-solid fa-eye-slash"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="ConfirmPassword1" class="form-label"
+                  >Confirm Password</label
+                >
+                <div class="row">
+                  <input
+                    type="password"
+                    class="form-control col"
+                    id="ConfirmPassword1"
+                  />
+                  <button
+                    id="show2"
+                    @mouseover="
+                      (e) => handleMouseOver(e, 'Confirm Passwort zeigen')
+                    "
+                    @mouseleave="handleMouseLeave"
+                    @click="ShowConfirmPasswort"
+                    type="button"
+                    class="btn btn-light col-2"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button
+                    id="hide2"
+                    @mouseover="
+                      (e) => handleMouseOver(e, 'Confirm Passwort versteken')
+                    "
+                    @mouseleave="handleMouseLeave"
+                    @click="HideConfirmPasswort"
+                    type="button"
+                    class="btn btn-light col-2"
+                    style="display: none"
+                  >
+                    <i class="fa-solid fa-eye-slash"></i>
+                  </button>
+                </div>
+              </div>
+              <button
+                @mouseover="(e) => handleMouseOver(e, 'Senden')"
+                @mouseleave="handleMouseLeave"
+                type="submit"
+                class="btn btn-primary"
+              >
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </form>
           </div>
         </div>
       </div>
