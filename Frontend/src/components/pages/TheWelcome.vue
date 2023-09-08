@@ -34,25 +34,19 @@ function handleMouseLeave() {
   throttle(hideToolTipp, 100);
 }
 
-function ShowPasswort() {
-  document.getElementById("Password1").type = "text";
-  document.getElementById("hide1").style.display = "block";
-  document.getElementById("show1").style.display = "none";
+function ShowPasswort(id) {
+  let btnshow = id + "show";
+  let btnhide = id + "hide";
+  document.getElementById(id).type = "text";
+  document.getElementById(btnhide).style.display = "block";
+  document.getElementById(btnshow).style.display = "none";
 }
-function HidePasswort() {
-  document.getElementById("Password1").type = "password";
-  document.getElementById("show1").style.display = "block";
-  document.getElementById("hide1").style.display = "none";
-}
-function ShowConfirmPasswort() {
-  document.getElementById("ConfirmPassword1").type = "text";
-  document.getElementById("hide2").style.display = "block";
-  document.getElementById("show2").style.display = "none";
-}
-function HideConfirmPasswort() {
-  document.getElementById("ConfirmPassword1").type = "password";
-  document.getElementById("show2").style.display = "block";
-  document.getElementById("hide2").style.display = "none";
+function HidePasswort(id) {
+  let btnshow = id + "show";
+  let btnhide = id + "hide";
+  document.getElementById(id).type = "password";
+  document.getElementById(btnshow).style.display = "block";
+  document.getElementById(btnhide).style.display = "none";
 }
 </script>
 
@@ -122,25 +116,25 @@ function HideConfirmPasswort() {
                 <label for="Password1" class="form-label">Password</label>
                 <div class="row">
                   <input
+                    id="Password1"
                     type="password"
                     class="form-control col"
-                    id="Password1"
                   />
                   <button
-                    id="show1"
+                    id="Password1show"
                     @mouseover="(e) => handleMouseOver(e, 'Passwort zeigen')"
                     @mouseleave="handleMouseLeave"
-                    @click="ShowPasswort"
+                    @click="ShowPasswort('Password1')"
                     type="button"
                     class="btn btn-light col-2"
                   >
                     <i class="fa-solid fa-eye"></i>
                   </button>
                   <button
-                    id="hide1"
+                    id="Password1hide"
                     @mouseover="(e) => handleMouseOver(e, 'Passwort versteken')"
                     @mouseleave="handleMouseLeave"
-                    @click="HidePasswort"
+                    @click="HidePasswort('Password1')"
                     type="button"
                     class="btn btn-light col-2"
                     style="display: none"
@@ -155,29 +149,29 @@ function HideConfirmPasswort() {
                 >
                 <div class="row">
                   <input
+                    id="ConfirmPassword1"
                     type="password"
                     class="form-control col"
-                    id="ConfirmPassword1"
                   />
                   <button
-                    id="show2"
+                    id="ConfirmPassword1show"
                     @mouseover="
                       (e) => handleMouseOver(e, 'Confirm Passwort zeigen')
                     "
                     @mouseleave="handleMouseLeave"
-                    @click="ShowConfirmPasswort"
+                    @click="ShowPasswort('ConfirmPassword1')"
                     type="button"
                     class="btn btn-light col-2"
                   >
                     <i class="fa-solid fa-eye"></i>
                   </button>
                   <button
-                    id="hide2"
+                    id="ConfirmPassword1hide"
                     @mouseover="
                       (e) => handleMouseOver(e, 'Confirm Passwort versteken')
                     "
                     @mouseleave="handleMouseLeave"
-                    @click="HideConfirmPasswort"
+                    @click="HidePasswort('ConfirmPassword1')"
                     type="button"
                     class="btn btn-light col-2"
                     style="display: none"
