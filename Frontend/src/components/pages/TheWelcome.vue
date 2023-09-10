@@ -71,6 +71,8 @@ function HidePasswort(id) {
         class="btn btn-primary col-1"
         @mouseover="(e) => handleMouseOver(e, 'Login')"
         @mouseleave="handleMouseLeave"
+        data-bs-toggle="modal"
+        data-bs-target="#Modal2"
       >
         <i class="fa-solid fa-arrow-right"></i><i class="fa-solid fa-user"></i>
       </button>
@@ -82,11 +84,12 @@ function HidePasswort(id) {
         @mouseover="(e) => handleMouseOver(e, 'Registrierung')"
         @mouseleave="handleMouseLeave"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#Modal1"
       >
         <i class="fa-solid fa-user-plus"></i>
       </button>
     </div>
+    <div>if-vue(login) User list</div>
     <!-- Tooltip-Element -->
     <div
       v-if="isTooltipVisible"
@@ -99,15 +102,15 @@ function HidePasswort(id) {
     <!-- Bootstrap Modal für Registrierung -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="Modal1"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="Modal1Label"
       aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="Modal1Label">Modal title</h1>
             <button
               @mouseover="(e) => handleMouseOver(e, 'schliesen')"
               @mouseleave="handleMouseLeave"
@@ -205,6 +208,79 @@ function HidePasswort(id) {
                 class="btn btn-primary"
               >
                 <i class="fa-solid fa-check"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap Modal für Login -->
+    <div
+      class="modal fade"
+      id="Modal2"
+      tabindex="-1"
+      aria-labelledby="Modal2Label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              @mouseover="(e) => handleMouseOver(e, 'close')"
+              @mouseleave="handleMouseLeave"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="Benutzername" class="form-label"
+                  >Benutzername</label
+                >
+                <input type="text" class="form-control" id="Benutzername" />
+              </div>
+              <div class="mb-3">
+                <label for="Password2" class="form-label">Password</label>
+                <div class="row">
+                  <input
+                    type="password"
+                    class="form-control col"
+                    id="Password2"
+                  />
+                  <button
+                    id="Password2show"
+                    type="button"
+                    class="btn btn-light col-2"
+                    @mouseover="(e) => handleMouseOver(e, 'Passwor zeigen')"
+                    @mouseleave="handleMouseLeave"
+                    @click="ShowPasswort('Password2')"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button
+                    id="Password2hide"
+                    type="button"
+                    class="btn btn-light col-2"
+                    @mouseover="(e) => handleMouseOver(e, 'Passwor versteken')"
+                    @mouseleave="handleMouseLeave"
+                    @click="HidePasswort('Password2')"
+                    style="display: none"
+                  >
+                    <i class="fa-solid fa-eye-slash"></i>
+                  </button>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                @mouseover="(e) => handleMouseOver(e, 'Submit')"
+                @mouseleave="handleMouseLeave"
+              >
+                Submit
               </button>
             </form>
           </div>
