@@ -19,6 +19,7 @@ Miro link: https://miro.com/app/board/uXjVP243pV0=/?share_link_id=774831860175
   - Frontend
   - Backend
 - Lizenzen
+  - Icons
 - Inspiration
 - Thanks
 
@@ -56,6 +57,11 @@ Miro link: https://miro.com/app/board/uXjVP243pV0=/?share_link_id=774831860175
 - mysql2
 
 ## Lizenzen
+
+### Icons
+
+Die verwendeten Icons stammen von [FontAwesome](https://fontawesome.com/). Sie sind lizenziert unter [FontAwesome License](https://fontawesome.com/license).
+
 
 ## Inspiration
 
