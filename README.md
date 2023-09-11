@@ -20,6 +20,7 @@ Miro link: https://miro.com/app/board/uXjVP243pV0=/?share_link_id=774831860175
   - Backend
 - Lizenzen
 - Inspiration
+- Thanks
 
 ## To do
 
@@ -63,3 +64,5 @@ Ich kam mit denen nicht klar Fand aber die grund idee cool:
 https://www.dndbeyond.com/
 
 https://roll20.net/
+
+## Thanks
