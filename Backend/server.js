@@ -1,8 +1,12 @@
 const express = require("express");
 const dbConnection = require("./app/config.db/testConfig");
+const cors = require("cors"); // Importieren Sie das cors-Paket
 
 const app = express();
 const PORT = 3000;
+
+// Aktivieren Sie CORS für alle Routen
+app.use(cors());
 
 dbConnection.connect((err) => {
   if (err) {
@@ -46,6 +50,18 @@ app.get("/", (req, res) => {
     `;
 
     res.send(html);
+  });
+});
+
+app.get("/api/data", (req, res) => {
+  dbConnection.query("SELECT * FROM a", (err, results) => {
+    if (err) {
+      res
+        .status(500)
+        .json({ error: "Fehler beim Abfragen der Datenbank: " + err });
+      return;
+    }
+    res.json(results);
   });
 });
 
