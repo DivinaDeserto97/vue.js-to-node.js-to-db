@@ -15,8 +15,13 @@ Miro link: https://miro.com/app/board/uXjVP243pV0=/?share_link_id=774831860175
 - To do
 - Log
 - Installation
+- node Packet
+  - Frontend
+  - Backend
 - Lizenzen
+  - Icons
 - Inspiration
+- Thanks
 
 ## To do
 
@@ -36,7 +41,27 @@ Miro link: https://miro.com/app/board/uXjVP243pV0=/?share_link_id=774831860175
 
 ## Installation
 
+## node Packet
+
+### Frontend
+
+- Vue.js
+- Bootstrap
+- sass loader
+- Fontawsome
+
+### Backend
+
+- node.js
+- Express
+- mysql2
+
 ## Lizenzen
+
+### Icons
+
+Die verwendeten Icons stammen von [FontAwesome](https://fontawesome.com/). Sie sind lizenziert unter [FontAwesome License](https://fontawesome.com/license).
+
 
 ## Inspiration
 
@@ -45,3 +70,5 @@ Ich kam mit denen nicht klar Fand aber die grund idee cool:
 https://www.dndbeyond.com/
 
 https://roll20.net/
+
+## Thanks
