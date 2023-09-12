@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import TheWelcome from "./components/pages/TheWelcome.vue";
+import HomePage from "./components/pages/HomePage.vue";
 import HaederDesktop from "./components/groups/haeder/HaederDesktop.vue";
 import HaederMobile from "./components/groups/haeder/HaederMobile.vue";
 import HaederTablet from "./components/groups/haeder/HaederTablet.vue";
@@ -41,7 +41,7 @@ onUnmounted(() => {
     </header>
 
     <div class="row">
-      <TheWelcome />
+      <HomePage />
     </div>
 
     <footer class="row">
