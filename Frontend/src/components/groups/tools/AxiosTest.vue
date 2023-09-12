@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <pre>{{ JSON.stringify(data, null, 2) }}</pre>
+  <!-- <pre>{{ JSON.stringify(data, null, 2) }}</pre> -->
   <div>
     <table v-if="data.length">
       <thead>
