@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import SocilMediaen from "./../tools/SocialMedia.vue";
+</script>
 <template>
   <div class="row">
     <div class="col-2">
@@ -27,30 +29,7 @@
         </button>
       </form>
     </div>
-    <div class="col-1">
-      <button class="btn btn-light" type="button" data-bs-toggle="dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          role="button"
-          aria-expanded="false"
-        >
-          <i class="fa-solid fa-hashtag"></i>
-        </a>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a class="dropdown-item" href="#"
-            ><i class="fa-brands fa-discord"></i>Discord</a
-          >
-        </li>
-        <li>
-          <a class="dropdown-item" href="#"
-            ><i class="fa-brands fa-youtube"></i>Youtube</a
-          >
-        </li>
-      </ul>
-    </div>
+    <SocilMediaen/>
     <div class="col">
       <button class="btn btn-light" type="button">
         <i class="fa-solid fa-circle-half-stroke"></i>
